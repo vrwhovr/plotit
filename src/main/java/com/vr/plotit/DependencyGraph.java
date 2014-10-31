@@ -35,6 +35,7 @@ public class DependencyGraph implements Graph {
             adj[i] = new ArrayList<DirectedEdge>();
         }
     }
+
     @Override
     public int V() {
         return V;

@@ -19,7 +19,7 @@ public class TextDependencyParserTest {
 
     @Test
     public void readDependencyFile() throws  Exception {
-        TextDependencyParser parser = new TextDependencyParser("Test.dep");
+        TextDependencyParser parser = new TextDependencyParser("./src/main/resources/Test.dep");
         Graph g = parser.parse();
         assertNotNull(g);
     }

@@ -25,9 +25,11 @@ import java.util.StringTokenizer;
  */
 public class TextDependencyParser implements DependencyParser{
     private  Graph dep;
+
     public TextDependencyParser(String filename) {
+
         List<String> lines = getLines(filename);
-        Graph g = new DependencyGraph(lines.size());
+        dep = new DependencyGraph(lines.size());
         prepareDepencyGraph(lines);
     }
 
@@ -42,6 +44,7 @@ public class TextDependencyParser implements DependencyParser{
 
     public List<String> getLines(String fileName) {
         List<String> lines = new ArrayList<String>();
+
 
         try {
             Scanner scanner  = new Scanner(new FileInputStream(fileName));
@@ -59,10 +62,15 @@ public class TextDependencyParser implements DependencyParser{
             StringTokenizer tokenizer = new StringTokenizer(dependency, ":");
             String sourceVertex = tokenizer.nextToken();
 
-            StringTokenizer targets = new StringTokenizer(tokenizer.nextToken(), ",");
+            if (!tokenizer.hasMoreElements()) break;
+
+            String targetVerteces = tokenizer.nextToken();
+            StringTokenizer targets = new StringTokenizer(targetVerteces, ",");
 
             while (targets.hasMoreElements()) {
-                dep.addEdge(sourceVertex, targets.nextToken());
+                String target = targets.nextToken();
+                dep.addEdge(sourceVertex, target);
+                //System.out.println(sourceVertex +" --> " + target) ;
             }
         }
     }
