@@ -1,0 +1,9 @@
+tea(0) : boiled_water(1), milk(2), tea_powder(3), sugar(4)
+boiled_water(1) : boil_water(5)
+milk(2) : add_milk(6)
+tea_powder(3) : add_tea_powder(7)
+sugar(4) : add_sugar(8)
+boil_water(5) :
+add_milk(6) :
+add_tea_powder(7) :
+add_sugar(8) :
